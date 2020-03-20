@@ -24,13 +24,26 @@ index="main" sourcetype="iis"
 ```
 Digging deeper with the above search shows us that the same IP address makes "GET" and "POST" requests way more often than the `23.22.63.114` address. [more about request methods here](http://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol)
 
-2. What web scanner scanned the server?
+**What web scanner scanned the server?**
 
-3. What is the IP address of our web server?
+`Acunetix` scanned the server. This can be seen in the last search. In searching that `cs_method`, Acunetic came up as a website vulnerability scanner.
 
-4. What content management system is imreallynotbatman.com using?
+**What is the IP address of our web server?**
 
-5. What address is performing the brute-forcing attack against our website?
+By adding the `s_ip` field to our search after `cs_method` in stats count, we see out source IP is `192.168.250.70`.
+
+**What content management system is imreallynotbatman.com using?**
+
+```SQL
+index ="main" sourcetype="iis" imreallynotbatman.com
+| dedup cs_Referer
+| table cs_Referer
+```
+Looking at the [`cs_referer`](https://www.techopedia.com/definition/1583/referrer) data, we see that [`joomla`](https://www.joomla.org/about-joomla.html) which after googling what it is, is the content management system.
+
+**What address is performing the brute-forcing attack against our website?**
+
+Switching gears, the sourcetype `stream:http` looks as though it'll give us the data we need to answer the next few questions. Between POST and GET requests, brute forcing passwords will most likely be carried out with POST requests. Looking at the search from the first question, `40.80.148.42` makes the most POST requests, but it isn't the answer. `23.22.63.114` is the only other host that makes POST requests, and this is the answer. But why? The only thing I can think of is that brute forcing the password didn't take that many tries. And now that I think of it, the other IP address had a lot of "debugging" and "vulnerability scanning" methods, making me think an admin was using it to make sure the web server was patched. I'm on the fence at this point as to whether or not the 40.80 IP is malicious or not. But then again, an admin would probably run those tools within the environment, not externally.
 
 6. What is the first password attempted in the attack?
 
