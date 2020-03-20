@@ -8,6 +8,8 @@ index=* sourcetype=*
 | dedup index sourcetype 
 | table sourcetype
 ```
+We see that there is only one index: `main` and 5 different sourcetypes: `stream:http`, `stream:udp`, `stream:ip`, `stream:tcp`, and `stream:dns`.
+
 1. What IP is scanning our web server?
 
 2. What web scanner scanned the server?
