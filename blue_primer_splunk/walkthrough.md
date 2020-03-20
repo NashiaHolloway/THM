@@ -45,7 +45,16 @@ Looking at the [`cs_referer`](https://www.techopedia.com/definition/1583/referre
 
 Switching gears, the sourcetype `stream:http` looks as though it'll give us the data we need to answer the next few questions. Between POST and GET requests, brute forcing passwords will most likely be carried out with POST requests. Looking at the search from the first question, `40.80.148.42` makes the most POST requests, but it isn't the answer. `23.22.63.114` is the only other host that makes POST requests, and this is the answer. But why? The only thing I can think of is that brute forcing the password didn't take that many tries. And now that I think of it, the other IP address had a lot of "debugging" and "vulnerability scanning" methods, making me think an admin was using it to make sure the web server was patched. I'm on the fence at this point as to whether or not the 40.80 IP is malicious or not. But then again, an admin would probably run those tools within the environment, not externally.
 
-6. What is the first password attempted in the attack?
+**What is the first password attempted in the attack?**
+
+Looking through the `stream:http` fields, `src_content` looks the most promising. It has username and password information in it. Let's get crazy and try to do some [regex](https://www.rexegg.com/regex-quickstart.html) to extract what we need, so we don't have to look at all that other junk.
+
+```SQL
+index="main" sourcetype="stream:http" src_ip="23.22.63.114" src_content!\=""
+| rex field=src_content
+| table src_ip uname pass dest_ip endtime
+| sort endtime
+```
 
 7. One of the passwords in the brute force attack is James Brodsky's favorite Coldplay song. Which six character song is it?
 
