@@ -1,6 +1,11 @@
 # Blue Primer: Splunk
+I won't go into tasks 1-4, as they should be accomplished by yourself. I wanted to show my though process of creating searches based on what information I need to find.
 
 ## Task 5: Advanced Persistent Threat
+I first like to get an idea of the data I'm working with, by doing the following search:
+```SQL
+index=* sourcetype=* | dedup index sourcetype | table sourcetype
+```
 1. What IP is scanning our web server?
 
 2. What web scanner scanned the server?
