@@ -8,10 +8,20 @@ index=* sourcetype=*
 | dedup index sourcetype 
 | table sourcetype
 ```
-We see that there is only one index: `main` and 5 different sourcetypes: `stream:http`, `stream:udp`, `stream:ip`, `stream:tcp`, and `stream:dns`.
+Making sure our time picker is set to "All Time", we see that there is only one index: `main`, and 21 different sourcetypes.
 
-1. What IP is scanning our web server?
-
+**What IP is scanning our web server?**
+There is a sourcetype for `iis`, which is a Microsoft web server, so we'll start there. Looking at the fields, we get a `c_ip`, which is the address of the client that accessed the server. 
+```SQL
+index="main" sourcestype="iis"
+| stats count by c_ip
+```
+This search shows us that the `40.80.148.42` IP address hit the web server 20967 times, which is way more than the other 4 IP addresses that touched the server.
+```SQL
+index="main" sourcetype="iis"
+| stats count by c_ip cs_method
+```
+Digging deeper with the above search shows us that the same IP address makes "GET" and "POST" requests way more often than the `23.22.63.114` address. [more about request methods here](http://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol)
 2. What web scanner scanned the server?
 
 3. What is the IP address of our web server?
