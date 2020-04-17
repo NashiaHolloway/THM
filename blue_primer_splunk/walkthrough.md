@@ -5,7 +5,7 @@ I won't go into tasks 1-4, as they should be accomplished by yourself. I wanted 
 I first like to get an idea of the data I'm working with, by doing the following search:
 ```SQL
 index=* sourcetype=* 
-| dedup index sourcetype 
+| dedup sourcetype 
 | table sourcetype
 ```
 Making sure our time picker is set to "All Time", we see that there is only one index: `main`, and 21 different sourcetypes.
@@ -22,7 +22,7 @@ This search shows us that the `40.80.148.42` IP address hit the web server 20967
 index="main" sourcetype="iis"
 | stats count by c_ip cs_method
 ```
-Digging deeper with the above search shows us that the same IP address makes "GET" and "POST" requests way more often than the `23.22.63.114` address. [more about request methods here](http://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol)
+Digging deeper with the above search shows us that the same IP address makes "GET" and "POST" requests way more often than the `23.22.63.114` address. [More about request methods here](http://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol)
 
 **What web scanner scanned the server?**
 
@@ -50,11 +50,17 @@ Switching gears, the sourcetype `stream:http` looks as though it'll give us the 
 Looking through the `stream:http` fields, `src_content` looks the most promising. It has username and password information in it. Let's get crazy and try to do some [regex](https://www.rexegg.com/regex-quickstart.html) to extract what we need, so we don't have to look at all that other junk.
 
 ```SQL
-index="main" sourcetype="stream:http" src_ip="23.22.63.114" src_content!\=""
-| rex field=src_content
+index="botsv1" sourcetype="stream:http" src_ip="23.22.63.114" form_data!\=""
+| rex field=form_data "username=(?<uname>[^&]+)\\&"
+| rex field=form_data "passwd=(?<pass>[^&]+)\\&*"
 | table src_ip uname pass dest_ip endtime
 | sort endtime
 ```
+The above regex can be made into one line, so a good exercise would be trying to figure out how to do that. (read: I didn't feel like doing it, but you can). To extract the username, the expression reads: From the `form_data` field, put whatever is after "usrname=" into the `uname` field, grabbing everything that isn't an `&`. Stop looking for a match when you reach an `&`.
+
+Extracting the password is the same, however, at the end there is anasterisk meaning there may be "zero or more" `&`'s to grab. This takes into account that some of the data in `form_data` ends after "passwd" and sometimes if continues on to a random string of letters and numbers.
+
+Sorting by the `endtime` shows us that the first password attempted is `12345678`.
 
 **One of the passwords in the brute force attack is James Brodsky's favorite Coldplay song. Which six character song is it?**
 
