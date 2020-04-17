@@ -58,14 +58,26 @@ index="botsv1" sourcetype="stream:http" src_ip="23.22.63.114" form_data!\=""
 ```
 The above regex can be made into one line, so a good exercise would be trying to figure out how to do that. (read: I didn't feel like doing it, but you can). To extract the username, the expression reads: From the `form_data` field, put whatever is after "usrname=" into the `uname` field, grabbing everything that isn't an `&`. Stop looking for a match when you reach an `&`.
 
-Extracting the password is the same, however, at the end there is anasterisk meaning there may be "zero or more" `&`'s to grab. This takes into account that some of the data in `form_data` ends after "passwd" and sometimes if continues on to a random string of letters and numbers.
+Extracting the password is the same, however, at the end there is an asterisk meaning there may be "zero or more" `&`'s to grab. This takes into account that some of the data in `form_data` ends after "passwd" and sometimes it continues on to a string of letters and numbers.
 
-Sorting by the `endtime` shows us that the first password attempted is `12345678`.
+Sorting by the `endtime` shows us that the first password attempted is `12345678`
 
 **One of the passwords in the brute force attack is James Brodsky's favorite Coldplay song. Which six character song is it?**
 
+Building off the last search, we can show which passwords are 6 characters in length.
 
-8. What was the correct password for admin access to the content management system running imreallynotbatman.com?
+```SQL
+index="botsv1" sourcetype="stream:http" src_ip="23.22.63.114" form_data!\=""
+| rex field=form_data "passwd=(?<pass>[^&]+)\\&*"
+| eval chars=len(pass)
+| where chars = 6
+| sort pass
+```
+This search limits us to only 6 character long passwords, but there are still 213 of them. I tried looking up who James Brodsky is with no luck, and tried to figure out how to search a page by character count, with no luch either. I resorted to manually going through the [list of Coldplay songs](https://en.wikipedia.org/wiki/List_of_songs_recorded_by_Coldplay) and checking is I saw any in Splunk. It helped that both lists were in alphabetical order. The only two were "Voodoo" and "Yellow". The answer is the latter. (haha, a lesson in differentiating "former" and "latter").
+
+**What was the correct password for admin access to the content management system running imreallynotbatman.com?**
+
+
 
 9. What was the average password length used in the password brute forcing attempt rounded to closest whole integer?
 
