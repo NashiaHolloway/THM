@@ -85,7 +85,7 @@ index="botsv1" sourcetype="stream:http" dest_ip="192.168.250.70" uri="*administr
 | where pass!\=""
 | table dest_ip pass uri
 ```
-Upon completing this search my eye automatically finds "batman". Seems fitting that this is the right answer given the name of the website. It is the right answer, but let's pretent we just make an educated guess and build a more solid case as to why.
+Upon completing this search my eye automatically finds `batman`. Seems fitting that this is the right answer given the name of the website. It is the right answer, but let's pretent we just make an educated guess and build a more solid case as to why.
 
 ```SQL
 index="botsv1" sourcetype="stream:http" dest_ip="192.168.250.70" uri="*administrator*"
@@ -95,9 +95,18 @@ index="botsv1" sourcetype="stream:http" dest_ip="192.168.250.70" uri="*administr
 | table pass uri
 | sort -uri
 ```
-This search give us solid proof. The password "batman" was the most used password, meaning the attacker probably tried it once, bruteforcing, and once they saw it worked, logged in with it again.
+This search give us solid proof. The password `batman` was the most used password, meaning the attacker probably tried it once, bruteforcing, and once they saw it worked, logged in with it again.
 
 **What was the average password length used in the password brute forcing attempt rounded to closest whole integer?**
+
+```SQL
+index="botsv1" sourcetype="stream:http" src_ip="23.22.63.114" form_data!\=""
+| rex field=form_data "passwd=(?<pass>[^&]+)\\&*"
+| eval chars=len(pass)
+| stats avg(chars) as average by dest_ip
+| table average
+```
+The answer is `6`.
 
 10. How many seconds elapsed between the time the brute force password scan identified the correct password and the compromised login rounded to 2 decimal places?
 
