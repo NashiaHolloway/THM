@@ -108,9 +108,11 @@ index="botsv1" sourcetype="stream:http" src_ip="23.22.63.114" form_data!\=""
 ```
 The answer is `6`.
 
-10. How many seconds elapsed between the time the brute force password scan identified the correct password and the compromised login rounded to 2 decimal places?
+**How many seconds elapsed between the time the brute force password scan identified the correct password and the compromised login rounded to 2 decimal places?**
 
-11. How many unique passwords were attempted in teh brute force attempt?
+
+
+11. How many unique passwords were attempted in the brute force attempt?
 
 12. What is the name of the executable uploaded by p01s0n1vy?
 
