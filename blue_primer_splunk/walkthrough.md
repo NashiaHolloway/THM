@@ -56,7 +56,8 @@ index="main" sourcetype="stream:http" src_ip="23.22.63.114" src_content!\=""
 | sort endtime
 ```
 
-7. One of the passwords in the brute force attack is James Brodsky's favorite Coldplay song. Which six character song is it?
+**One of the passwords in the brute force attack is James Brodsky's favorite Coldplay song. Which six character song is it?**
+
 
 8. What was the correct password for admin access to the content management system running imreallynotbatman.com?
 
