@@ -73,13 +73,31 @@ index="botsv1" sourcetype="stream:http" src_ip="23.22.63.114" form_data!\=""
 | where chars = 6
 | sort pass
 ```
-This search limits us to only 6 character long passwords, but there are still 213 of them. I tried looking up who James Brodsky is with no luck, and tried to figure out how to search a page by character count, with no luch either. I resorted to manually going through the [list of Coldplay songs](https://en.wikipedia.org/wiki/List_of_songs_recorded_by_Coldplay) and checking is I saw any in Splunk. It helped that both lists were in alphabetical order. The only two were "Voodoo" and "Yellow". The answer is the latter. (haha, a lesson in differentiating "former" and "latter").
+This search limits us to only 6 character long passwords, but there are still 213 of them. I tried looking up who James Brodsky is with no luck, and tried to figure out how to search a page by character count, with no luck either. I resorted to manually going through the [list of Coldplay songs](https://en.wikipedia.org/wiki/List_of_songs_recorded_by_Coldplay) and checking if I saw any in Splunk. It helped that both lists were in alphabetical order. The only two were "Voodoo" and "Yellow". The answer is the latter. (haha, a lesson in differentiating "former" and "latter").
 
 **What was the correct password for admin access to the content management system running imreallynotbatman.com?**
 
+The Joomla content management system running imnotreallybatman.com sits at `192.168.250.70". 
 
+```SQL
+index="botsv1" sourcetype="stream:http" dest_ip="192.168.250.70" uri="*administrator*"
+| rex field=form_data "passwd=(?<pass>[^&]+)\\&*"
+| where pass!\=""
+| table dest_ip pass uri
+```
+Upon completing this search my eye automatically finds "batman". Seems fitting that this is the right answer given the name of the website. It is the right answer, but let's pretent we just make an educated guess and build a more solid case as to why.
 
-9. What was the average password length used in the password brute forcing attempt rounded to closest whole integer?
+```SQL
+index="botsv1" sourcetype="stream:http" dest_ip="192.168.250.70" uri="*administrator*"
+| rex field=form_data "passwd=(?<pass>[^&]+)\\&*"
+| where pass!\=""
+| stats count(uri) AS uri by pass
+| table pass uri
+| sort -uri
+```
+This search give us solid proof. The password "batman" was the most used password, meaning the attacker probably tried it once, bruteforcing, and once they saw it worked, logged in with it again.
+
+**What was the average password length used in the password brute forcing attempt rounded to closest whole integer?**
 
 10. How many seconds elapsed between the time the brute force password scan identified the correct password and the compromised login rounded to 2 decimal places?
 
