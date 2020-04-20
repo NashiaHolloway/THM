@@ -124,7 +124,14 @@ The difference in seconds rounded to 2 decimal places is `92.17`.
 
 **How many unique passwords were attempted in the brute force attempt?**
 
-
+```SQL
+index="botsv1" sourcetype="stream:http"
+| rex field=form_data "passwd=(?<pass>[^&]+)\\&*"
+| dedup pass
+| stats count by pass
+| stats sum(count)
+```
+Deduping the password field gives us all teh unique entries. Counting the entries only gives us 1 per password (since they're all unique), then calculating the sum gives us the total of all uniqie passwords: `412`.
 
 12. What is the name of the executable uploaded by p01s0n1vy?
 
