@@ -1,4 +1,4 @@
-# Blue Primer: Splunk
+# Blue Primer: Splunk - Part1
 I won't go into tasks 1-4, as they should be accomplished by yourself. I wanted to show my though process of creating searches based on what information I need to find. Also, I started out using the "main" index, and switched to "botsv1", so if one search doesn't work, try the other index.
 
 ## Task 5: Advanced Persistent Threat
