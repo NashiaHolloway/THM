@@ -1,4 +1,5 @@
-#Blue Primer: Splunk - Part2
+# Blue Primer: Splunk - Part2
+
 I'll be sticking with the "botsv1" index for part 2.
 
 ## Task 6: Ransomware

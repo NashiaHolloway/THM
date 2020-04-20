@@ -93,7 +93,8 @@ index="botsv1" sourcetype="stream:http" dest_ip="192.168.250.70" uri="*administr
 | where pass!\=""
 | stats count(uri) AS uri by pass
 | table pass uri
-| sort -uri``
+| sort -uri
+```
 This search give us solid proof. The password `batman` was the most used password, meaning the attacker probably tried it once, bruteforcing, and once they saw it worked, logged in with it again.
 
 **What was the average password length used in the password brute forcing attempt rounded to closest whole integer?**
@@ -206,7 +207,6 @@ Staying on the same page, we can click the "Related resources" link for VirusTot
 
 **What does this hex code mean?**
 
-Popping it into hex to ASCII converter gives you the answer: "Steve Brant's Beard is a powerful thing. Find this message and ask him to buy you a beer!!!"
+Popping it into hex to ASCII converter gives you the answer: `"Steve Brant's Beard is a powerful thing. Find this message and ask him to buy you a beer!!!"`
 
-## Task 6: Ransomware
 
