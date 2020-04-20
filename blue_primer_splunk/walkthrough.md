@@ -77,7 +77,7 @@ This search limits us to only 6 character long passwords, but there are still 21
 
 **What was the correct password for admin access to the content management system running imreallynotbatman.com?**
 
-The Joomla content management system running imnotreallybatman.com sits at `192.168.250.70". 
+The Joomla content management system running imnotreallybatman.com sits at `192.168.250.70`. 
 
 ```SQL
 index="botsv1" sourcetype="stream:http" dest_ip="192.168.250.70" uri="*administrator*"
@@ -93,8 +93,7 @@ index="botsv1" sourcetype="stream:http" dest_ip="192.168.250.70" uri="*administr
 | where pass!\=""
 | stats count(uri) AS uri by pass
 | table pass uri
-| sort -uri
-```
+| sort -uri``
 This search give us solid proof. The password `batman` was the most used password, meaning the attacker probably tried it once, bruteforcing, and once they saw it worked, logged in with it again.
 
 **What was the average password length used in the password brute forcing attempt rounded to closest whole integer?**
@@ -131,9 +130,24 @@ index="botsv1" sourcetype="stream:http"
 | stats count by pass
 | stats sum(count)
 ```
-Deduping the password field gives us all teh unique entries. Counting the entries only gives us 1 per password (since they're all unique), then calculating the sum gives us the total of all uniqie passwords: `412`.
+Deduping the password field gives us all the unique entries. Counting the entries only gives us 1 per password (since they're all unique), then calculating the sum gives us the total of all uniqie passwords: `412`.
 
-12. What is the name of the executable uploaded by p01s0n1vy?
+**What is the name of the executable uploaded by p01s0n1vy?**
+
+The compromised host was `192.168.250.70` where the content management sits. I'm not sure the sourectype we've been using is the best one for the job, so we're going to reassess.
+
+```SQL
+index=botsv1 sourcetype=* *.exe*
+| dedup sourcetype
+| table sourcetype
+```
+Switching to "Smart Mode" makes this search faster. We get 8 results. Poking through them, it looks like `fgt_utm` and `suricata` are our best options. Looking them up, the [Fortinet Unified Thream Management (UTM)](https://www.fortinet.com/products/smallbusiness/utm/overview.html) is where `ftg_utm` comes from. [Suricata](https://suricata-ids.org/) is an intrusion detection system. Just because of the order I searched, I found the answer using the `ftg_utm` sourcetype, but looking through Suricata, you could also get the answer through there.
+
+```SQL
+index="botsv1" sourcetype="fgt_utm" filename="*.exe" dstip="192.168.250.70"
+| table filename dstip
+```
+The answer is `3791.exe`.
 
 13. What is the MD5 hash of the executable uploaded?
 
