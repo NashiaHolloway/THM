@@ -184,17 +184,29 @@ index="botsv1" sourcetype="stream:http" src_ip="192.168.250.70"
 ```
 6 requests are to `update.joomla.org`, and 2 are for the `prankglassinebracket.jumpingcrab.com:1337` (anything having to do with 1337 or variations thereof should be suspicious in security related events) for a jpeg file.
 
-15. This attack used dynamic DNS to resolve the malicious IP. What fully qualified domain name (FQDN) is associated with this attack?
+**This attack used dynamic DNS to resolve the malicious IP. What fully qualified domain name (FQDN) is associated with this attack?**
 
-16. What IP address has P01s0n1vy tied to domains that are pre-staged to attack Wayne Enterprise?
+The answer is shown with the previous search: `prankglassinebracket.jumpingcrab.com`.
 
-17. Based on the data gathered from this attack, and common open source intelligence sources for domain names, what is the email address that is most likely associated with P01s0n1vy APT group?
+**What IP address has P01s0n1vy tied to domains that are pre-staged to attack Wayne Enterprise?**
 
-18. GCPD reported that common TTPs for the P01s01vy APT group if initial compromise fails is to send a spear phishing email with custom malware attached to their intended target. This malware is usually connected to P01s0n1vy's initial attack infrastructure. Using research techniques, provide the SHA256 hash of this malware.
+This answer can also be seen with the last search: `23.22.63.114`.
 
-19. What special hex code is associated with the custom malware discussed on the previous question?
+**Based on the data gathered from this attack, and common open source intelligence sources for domain names, what is the email address that is most likely associated with P01s0n1vy APT group?**
 
-20. What does this hex code mean?
+Popping the domain name into [ThreatCrowd](www.threatcrowd.org) gives domain names and associated IP addresses for it. We pivot to Po1s0n1vy.com and from there we can pivot to Wyncorpinc.com (related to the batman theme). The email adress associated with this domain is the answer: `Lillian.Rose@po1s0n1vy.com`.
+
+**GCPD reported that common TTPs for the P01s01vy APT group if initial compromise fails is to send a spear phishing email with custom malware attached to their intended target. This malware is usually connected to P01s0n1vy's initial attack infrastructure. Using research techniques, provide the SHA256 hash of this malware.**
+
+We can use [ThreatMiner](www.threatminer.org) to find the SHA256 hash. Searching on the `23.22.63.114` IP address show the MD5 of the associated malware. Clicking that link leads us to the hash we need.
+
+**What special hex code is associated with the custom malware discussed on the previous question**
+
+Staying on the same page, we can click the "Related resources" link for VirusTotal. Under the "Community" tab, there is a comment that holds the hex code.
+
+**What does this hex code mean?**
+
+Popping it into hex to ASCII converter gives you the answer: "Steve Brant's Beard is a powerful thing. Find this message and ask him to buy you a beer!!!"
 
 ## Task 6: Ransomware
 
