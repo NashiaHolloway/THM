@@ -149,7 +149,30 @@ index="botsv1" sourcetype="fgt_utm" filename="*.exe" dstip="192.168.250.70"
 ```
 The answer is `3791.exe`.
 
-13. What is the MD5 hash of the executable uploaded?
+**What is the MD5 hash of the executable uploaded?**
+
+Using the above search, another field under that sourcetype is `file_hash`. Unfortunately, it doesn't look like an MD5 hash (too long). I'm guessing it's a SHA256 one. We have to take another approach. Looking through the list of sourcetypes associated with `3791.exe`, we have 5 options.
+
+```SQL
+index=botsv1 sourcetype=* *3791.exe*
+| dedup sourcetype
+| table sourcetype
+```
+Sysmon is always a good source of information related to processes. Plus, I've already looked through the others.
+
+```SQL
+index="botsv1" sourcetype="XmlWinEventLog:Microsoft-Windows-Sysmon/Operational" process_name="3791.exe"
+| sort _time
+| table process_name MD5 _time
+```
+This search doesn't give us our final answer because there are too many different hashes for the `3791.exe` process. We need to find the first instance of the process and that'll give us our hash. Even sorting by time doesn't help, because there are multiple hashes in one second.
+
+The Sysmon event code 1 is for process creation. Adding that little bit of information gives us our answer.
+
+```SQL
+index="botsv1" sourcetype="XMLWinEventLog:Microsoft-Windows-Sysmon/Operational" process_name="3791.exe" EventCode=1
+| table process_name MD5
+```
 
 14. What is the name of the file that defaced the imreallynotbatman.com website?
 
