@@ -174,7 +174,15 @@ index="botsv1" sourcetype="XMLWinEventLog:Microsoft-Windows-Sysmon/Operational" 
 | table process_name MD5
 ```
 
-14. What is the name of the file that defaced the imreallynotbatman.com website?
+**What is the name of the file that defaced the imreallynotbatman.com website?**
+
+For this question, it's important to think about the order of events of the attack. The web server was first compromised and an executable was executed. From there, the compromised server reaches out to an external site to GET a file (the file that defaces the imnotreallybatman.com website). 
+
+```SQL
+index="botsv1" sourcetype="stream:http" src_ip="192.168.250.70"
+| table dest_ip request site
+```
+6 requests are to `update.joomla.org`, and 2 are for the `prankglassinebracket.jumpingcrab.com:1337` (anything having to do with 1337 or variations thereof should be suspicious in security related events) for a jpeg file.
 
 15. This attack used dynamic DNS to resolve the malicious IP. What fully qualified domain name (FQDN) is associated with this attack?
 
