@@ -1,5 +1,5 @@
 # Blue Primer: Splunk
-I won't go into tasks 1-4, as they should be accomplished by yourself. I wanted to show my though process of creating searches based on what information I need to find.
+I won't go into tasks 1-4, as they should be accomplished by yourself. I wanted to show my though process of creating searches based on what information I need to find. Also, I started out using the "main" index, and switched to "botsv1", so if one search doesn't work, try the other index.
 
 ## Task 5: Advanced Persistent Threat
 I first like to get an idea of the data I'm working with, by doing the following search:
@@ -110,9 +110,21 @@ The answer is `6`.
 
 **How many seconds elapsed between the time the brute force password scan identified the correct password and the compromised login rounded to 2 decimal places?**
 
+To answer this, we can use part of the last search. We know the conpromised password was "batman", so we'll have to narrow the search on that and look at the `_time` field.
+
+```SQL
+index="botsv1" sourcetype="stream:http"
+| rex field=form_data "passwd=(?<pass>[^&]+)\\&*"
+| search pass="batman"
+| stats earliest(_time) as first_try, latest(_time) as second_try
+| eval diff=second_try - first_try
+| table first_try second_try diff
+```
+The difference in seconds rounded to 2 decimal places is `92.17`.
+
+**How many unique passwords were attempted in the brute force attempt?**
 
 
-11. How many unique passwords were attempted in the brute force attempt?
 
 12. What is the name of the executable uploaded by p01s0n1vy?
 
