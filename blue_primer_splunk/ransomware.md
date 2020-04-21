@@ -33,8 +33,15 @@ index="botsv1" sourcetype="XmlWinEventLog:Microsoft-Windows-Sysmon/Operational" 
 ```
 Searching part of the USB name within the Sysmon events shows the file executed pretty quickly: `Miranda_Tate_unveiled.dotm`. Dotm extensions are for macro-enabled documents. 
 
-**During the initial Cerber infection a VB script is run. The entire script from this execution, pre-pended by the name of the launching .exe, can be found in a filed in Splunk. What is the length in characters of this field?**
+**During the initial Cerber infection a VB script is run. The entire script from this execution, pre-pended by the name of the launching .exe, can be found in a field in Splunk. What is the length in characters of this field?**
 
+Visual Basic scripts have the extension .vbs. It looks like the script can be seen in the command line field of the sysmon data.
+
+```SQL
+index="botsv1" sourcetype="XmlWinEventLog:Microsoft-Windows-Sysmon/Operational" .vbs
+| eval len=len(CommandLine)
+| table CommandLine len
+```
 
 **Bob Smith's workstation (we8105desk) was connected to a file server during the ransomware outbreak. What is the IP address of the file server?**
 
