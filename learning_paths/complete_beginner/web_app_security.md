@@ -24,3 +24,22 @@ nay
 ```
 401
 ```
+
+### Task 5 Mini CTF
+
+1. GET flag
+```
+curl http://IP:8081/ctf/get
+```
+2. POST flag
+```
+curl -X POST -d flag_please http://IP:8081/ctf/post
+```
+3. Get cookie flag
+```
+Inspect element for /ctf/getcookie, then under "storage"
+```
+4. Set cookie flag
+```
+curl -b "flagpls=flagpls" http://IP:8081/ctf/sendcookie
+```
