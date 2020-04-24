@@ -43,3 +43,4 @@ Inspect element for /ctf/getcookie, then under "storage"
 ```
 curl -b "flagpls=flagpls" http://IP:8081/ctf/sendcookie
 ```
+
