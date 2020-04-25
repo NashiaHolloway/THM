@@ -27,3 +27,25 @@
 [system and hardware commands](https://www.tecmint.com/commands-to-collect-system-and-hardware-information-in-linux/)
 
 [processes](https://www.cyberciti.biz/faq/show-all-running-processes-in-linux/)
+
+[list available shells](https://unix.stackexchange.com/questions/140286/how-to-find-list-of-available-shells-by-command-line)
+
+## Tools
+
+[linuxenum](https://github.com/rebootuser/LinEnum/blob/master/LinEnum.sh)
+
+[gtfobins](https://gtfobins.github.io/)
+
+[msfvenom cheat sheet](https://redteamtutorials.com/2018/10/24/msfvenom-cheatsheet/)
+
+## Web
+
+[http status codes](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status)
+
+[cookies](https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies)
+
+[curl cheat sheet](https://devhints.io/curl)
+
+[curl examples](https://www.tecmint.com/linux-curl-command-examples/)
+
+
