@@ -34,12 +34,15 @@ def main():
             # print(parsed_data)       
 
             # assign/update vars
+            old_port = port
             port = int(parsed_data[-1])
-            op = parsed_data[-3]
-            new_num = parsed_data[-2]
+            op = float(parsed_data[-3])
+            new_num = float(parsed_data[-2])
 
             # do calculation based on response
-            old_num = calc(op, num)
+            print("calculating")
+            if (port != old_port):
+                old_num = calc(op, num)
             print(old_num)
 
             # close connection
