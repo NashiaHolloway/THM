@@ -22,3 +22,13 @@ Use the shell to meterpreter to upgrade shells (post/multi/manage/shell_to_meter
 
 ## Task 4: Cracking
 After running `hashdump` in the meterpreter shell, the only non-default user is Jon: `Jon:1000:aad3b435b51404eeaad3b435b51404ee:ffb43f0de35be4d9917ac0cc8ad57f8d:::`. We copy his hash into a text file (ffb43f0de35be4d9917ac0cc8ad57f8d) and name it password.hash. To crack it, we use hashcat with the `-m 1000` switch to signify an NTLM password. We use the rockyou.txt found in `usr/share/manage/wordlsits/`. The password is found to be `alqfna22`.
+
+## Task 5: Find Flags
+
+First flag location: `C:\`
+
+Second flag location: `C:\Windows\System32\config`
+
+Third flag location: `C:\"Documents and Settings"\Jon\Documents\`
+
+* "type" to "cat" the flag
