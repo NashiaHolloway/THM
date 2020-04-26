@@ -1,31 +1,68 @@
 # imports
 import socket
 import sys
+import time
+import re
 
 # main
+def main():
+    # set initial vars
+    port = 1337
+    old_num = 0
+    server = sys.argv[1]
 
-# def calculation ex: add 900 3212 add 900 and move to port 3212; ex: minus 212 3499, subtract 212 and move on to port 3499
-def setup():
-    # vars
-    port = 3010
-    host = sys.argv[1]
+    # LOOP: until recv = STOP or port=9765
+    while port != 9756:
+        try: 
+            # socket operation (open & connect)
+            s = socket.socket()
+            s.connect((server, port))
 
-    # open socket
-    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            # send GET request
+            request = "GET / HTTP/1.1\r\nHost: %s\r\n\r\n" %server
+            s.send(request.encode("utf8"))
 
-    # connect to web server
-    s.connect((host, port))
+            # recevie response
+            resp = s.recv(4096)
 
-    # send GET request
-    s.sendall("GET / HTTP/1.1\r\n")
+            # parse data recevived
+            data = resp.decode("utf8")
+            parsed_data = re.split(' |\*|\n', data)
+            parsed_data = list(filter(None, parsed_data))
+            
+            # print(data)
+            # print(parsed_data)       
 
-    # receive response (receive: operation, number, and port)
-    receive = s.recv(4096)
-    print(receive)
-    pass
+            # assign/update vars
+            port = int(parsed_data[-1])
+            op = parsed_data[-3]
+            new_num = parsed_data[-2]
 
-def cal(op, num, port):
-    pass
+            # do calculation based on response
+            old_num = calc(op, num)
+            print(old_num)
+
+            # close connection
+            s.close()
+
+        # ports update every 4 seconds
+        except:
+            s.close()
+            time.sleep(3)
+            print("Sleeping")
+            pass
+
+def calc(op, old_num, new_num):
+    if op == "add":
+        return old_num + new_num
+    elif op == "minus":
+        return old_num - new_num
+    elif op == "multiply":
+        return old_num * new_num
+    elif op == "divide":
+        return old_num / new_num
+    else:
+        return None
 
 if __name__ == "__main__":
-    setup()
+    main()
