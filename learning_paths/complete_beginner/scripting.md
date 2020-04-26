@@ -51,18 +51,6 @@ for i in range(0, 50, 1):
 print(string_to_decode)
 ```
 
-2. You need to write a script that connects to the webserver on the correct port, do an operation on a number and then move onto the next port. Start your original number at 0.
-
-```python
-
-```
-
-3. 
-
-```python 
-
-```
-
 ### Resources
 
 [python base64 decode](https://stackoverflow.com/questions/3470546/python-base64-data-decode)
