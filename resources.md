@@ -48,4 +48,6 @@
 
 [curl examples](https://www.tecmint.com/linux-curl-command-examples/)
 
+[nikto cheat sheet](https://redteamtutorials.com/2018/10/24/nikto-cheatsheet/)
+
 

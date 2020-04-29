@@ -75,3 +75,9 @@ getuid
 ```
 cat /root/flag.txt
 ```
+
+## RP: Web Scanning
+
+### Task 2 ...I'm supposed to scan with that?
+
+[Nikto Cheat Sheet](https://redteamtutorials.com/2018/10/24/nikto-cheatsheet/)
