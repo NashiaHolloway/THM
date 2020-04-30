@@ -56,4 +56,6 @@
 
 [nikto cheat sheet](https://redteamtutorials.com/2018/10/24/nikto-cheatsheet/)
 
+[gobuster cheat sheet](https://redteamtutorials.com/2018/11/19/gobuster-cheatsheet/)
+
 
