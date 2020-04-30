@@ -4,7 +4,7 @@
 
 ## Task 1 Deploy the Vulnerable Machine
 
-2. Scan the machine with nmap, how many ports are open?
+**2. Scan the machine with nmap, how many ports are open?**
 
 ```
 nmap -sC -sV -A $IP -oN initial.nmap
