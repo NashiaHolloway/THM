@@ -10,7 +10,7 @@
 nmap -sC -sV -A $IP -oN initial.nmap
 ```
 
-![Screenshot](THM/learning_paths/oscp_prep/kenobi/initial.png?raw=true)
+![](initial.png)
 
 ## Task 2 Enumerating Samba for Shares
 
