@@ -30,6 +30,10 @@
 
 [list available shells](https://unix.stackexchange.com/questions/140286/how-to-find-list-of-available-shells-by-command-line)
 
+## Nmap
+
+[nmap cheat sheet](https://www.stationx.net/nmap-cheat-sheet/)
+
 ## Tools
 
 [linuxenum](https://github.com/rebootuser/LinEnum/blob/master/LinEnum.sh)
