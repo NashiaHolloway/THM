@@ -43,25 +43,4 @@ index="botsv1" sourcetype="XmlWinEventLog:Microsoft-Windows-Sysmon/Operational" 
 | table CommandLine len
 ```
 
-**Bob Smith's workstation (we8105desk) was connected to a file server during the ransomware outbreak. What is the IP address of the file server?**
-
-
-**What is the first suspicious domain visited by we8105desk on 24AUG2016?**
-
-
-**The malware downloads a file that contains the Cerber ransomware cryptor code. What is the name of that file?**
-
-
-**The parent process ID of 121214.tmp?**
-
-
-**Amongst the Suricata signatures that detected the Cerber malware, what signature ID alerted the fewewst number of times?**
-
-
-**The Cerber ransomware encrypts files located in Bob Smith's Windows profile. How many .txt files does it encrypt?**
-
-
-**How many distinct PDFs did the ransomware encrypt on the remote file server?**
-
-
-**What FQDN does the Cerber ransomware attempt to direct the user to a the end of its encryption phase?**
+**Lost the will to document the remaining questions. By this time you'll have learned enough to find the answers.**
