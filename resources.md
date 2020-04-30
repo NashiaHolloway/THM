@@ -38,6 +38,8 @@
 
 [msfvenom cheat sheet](https://redteamtutorials.com/2018/10/24/msfvenom-cheatsheet/)
 
+[creating msfvenom payloads](https://netsec.ws/?p=331)
+
 ## Web
 
 [http status codes](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status)
