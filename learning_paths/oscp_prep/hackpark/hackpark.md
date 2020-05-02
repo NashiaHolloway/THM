@@ -1,5 +1,7 @@
 # HackPark
 
+> Nashia Holloway | May 2nd 2020
+
 ## Task 1 Deploy
 
 **2. What's the name of the clown displayed on the homepage?**
