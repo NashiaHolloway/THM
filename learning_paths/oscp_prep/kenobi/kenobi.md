@@ -114,4 +114,4 @@ export PATH=/tmp:$PATH
 /usr/bin/menu
 ```
 
-Enter `1` to get a shell as root. The flag is in the /root directory.
+Enter `1` to get a shell as root. The flag is in the `/root` directory.
