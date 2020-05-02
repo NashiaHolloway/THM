@@ -69,5 +69,5 @@ We use the `BUILTIN\Administrators` token.
 impersonate_token "BUILTIN\Administrators"
 ```
 
-Read the flag located at `C:\Windows\System32\config".
+Read the flag located at `C:\Windows\System32\config`.
 
