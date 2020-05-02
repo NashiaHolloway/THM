@@ -1,4 +1,4 @@
-# Kenobi Walkthrough
+# Kenobi
 
 > Nashia Holloway | April 30th, 2020
 
