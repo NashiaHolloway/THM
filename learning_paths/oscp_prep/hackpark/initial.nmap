@@ -1,0 +1,19 @@
+# Nmap 7.80 scan initiated Sat May  2 14:11:02 2020 as: nmap -sC -sV -oN initial.nmap 10.10.104.218
+Nmap scan report for 10.10.104.218
+Host is up (0.11s latency).
+Not shown: 998 filtered ports
+PORT     STATE SERVICE            VERSION
+80/tcp   open  http               Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)
+| http-methods: 
+|_  Potentially risky methods: TRACE
+| http-robots.txt: 6 disallowed entries 
+| /Account/*.* /search /search.aspx /error404.aspx 
+|_/archive /archive.aspx
+|_http-server-header: Microsoft-IIS/8.5
+|_http-title: hackpark | hackpark amusements
+3389/tcp open  ssl/ms-wbt-server?
+|_ssl-date: 2020-05-02T18:11:37+00:00; +1s from scanner time.
+Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Sat May  2 14:12:36 2020 -- 1 IP address (1 host up) scanned in 94.10 seconds
