@@ -1,4 +1,4 @@
-# Try Hack Me Documentation
+# Try Hack Me
 
 ![](THM-Header.png)
 
