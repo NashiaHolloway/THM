@@ -34,6 +34,10 @@
 
 [nmap cheat sheet](https://www.stationx.net/nmap-cheat-sheet/)
 
+## SMB
+
+[smb attacks](https://www.hackingarticles.in/smb-penetration-testing-port-445/)
+
 ## Tools
 
 [linuxenum](https://github.com/rebootuser/LinEnum/blob/master/LinEnum.sh)
