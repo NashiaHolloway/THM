@@ -16,6 +16,10 @@
 
 [decode base64](https://www.igorkromin.net/index.php/2017/04/26/base64-encode-or-decode-on-the-command-line-without-installing-extra-tools-on-linux-windows-or-macos/)
 
+## Exploits
+
+[gtfobins](https://gtfobins.github.io/)
+
 ## Grep
 
 [grep nth line](https://ubuntuforums.org/showthread.php?t=390568)
