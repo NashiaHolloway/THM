@@ -1,6 +1,6 @@
 # Pepega Energy
 
-> Nashia Holloway | MAy 6th, 2020
+> Nashia Holloway | May 6th, 2020
 
 ## Task 1 Rana Verde
 
