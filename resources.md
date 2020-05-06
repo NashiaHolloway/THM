@@ -34,6 +34,10 @@
 
 [list available shells](https://unix.stackexchange.com/questions/140286/how-to-find-list-of-available-shells-by-command-line)
 
+## Metasploit
+
+[add a new module](https://www.hackers-arise.com/post/2017/06/08/metasploit-basics-part-7-adding-a-new-module-eternalblue)
+
 ## Nmap
 
 [nmap cheat sheet](https://www.stationx.net/nmap-cheat-sheet/)
