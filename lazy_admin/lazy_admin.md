@@ -32,6 +32,4 @@ Now we have a shell running as `www-data` and can get the user flag.
 
 ![](root.png)
 
-![](perl.png)
-
 By running the script with sudo privs and creating another listener on that port, we now have a root shell and can grab the root flag.
