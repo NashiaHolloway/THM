@@ -1,0 +1,12 @@
+# Nmap 7.80 scan initiated Wed May  6 18:57:27 2020 as: nmap --script vulners -oN vuln.nmap 10.10.115.118
+Nmap scan report for 10.10.115.118
+Host is up (0.10s latency).
+Not shown: 995 closed ports
+PORT    STATE SERVICE
+22/tcp  open  ssh
+25/tcp  open  smtp
+80/tcp  open  http
+389/tcp open  ldap
+443/tcp open  https
+
+# Nmap done at Wed May  6 18:57:44 2020 -- 1 IP address (1 host up) scanned in 17.05 seconds
