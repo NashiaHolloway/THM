@@ -32,4 +32,4 @@ Now we have a shell running as `www-data` and can get the user flag.
 
 ![](root.png)
 
-By running the script with sudo privs and creating another listener on that port, we now have a root shell and can grab the root flag.
+By running the script with sudo privs and creating another listener on that port, we now have a root shell and can grab the root flag. We first have to change the IP address. None of the usual text editors are available, so overwriting the original with what we want is what I did. (ex: echo "stuff there before \<myIP\> blah" > /etc/copy.sh). 
