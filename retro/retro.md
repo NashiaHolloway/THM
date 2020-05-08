@@ -24,7 +24,7 @@ Here is the creator's page. He left a comment on a post that looks like it could
 
 ![](pass.png)
 
-Let's see if it'll work with an RDP session. It does! And the user flag is on the desktop.
+Let's see if it'll work with an RDP session. `xfreerdp /u:retroweb\wade /v:$IP` It does! And the user flag is on the desktop.
 
 ![](user.png)
 
