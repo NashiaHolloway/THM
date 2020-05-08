@@ -30,6 +30,6 @@ Let's see if it'll work with an RDP session. `xfreerdp /u:'retroweb\wade' /v:$IP
 
 I tried uploading a php reverse shell, but couldn't get a connection (assuming because of firewall?). Tried more common ports to no avail.
 
-Poking around the RDP session, there's an interesting page bookmarked in the browser. The NIST page for `CVE-2019-1338`. An elevation of privilege vuln in the Windows Certificate Dialog. I followed a [video](https://www.youtube.com/watch?v=3BQKpPNlTSo) by the Zero Day Initiative to exploit.
+Poking around the RDP session, there's an interesting page bookmarked in the browser. The NIST page for `CVE-2019-1388`. An elevation of privilege vuln in the Windows Certificate Dialog. I followed a [video](https://www.youtube.com/watch?v=3BQKpPNlTSo) by the Zero Day Initiative to exploit.
 
 ![](root.png) 
