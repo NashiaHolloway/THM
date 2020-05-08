@@ -1,0 +1,14 @@
+POST /978345210/index.php HTTP/1.1
+Host: 10.10.142.212:1337
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101 Firefox/68.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://10.10.142.212:1337/978345210/index.php
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 40
+Connection: close
+Cookie: PHPSESSID=qk4vqs4fdopl60bt1n1l8ka2p2
+Upgrade-Insecure-Requests: 1
+
+username=afs&password=asd&submit=+Login+
