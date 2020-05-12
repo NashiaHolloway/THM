@@ -1,6 +1,6 @@
 # LFI
 
-> Nashia Holloway | MAy 11th, 2020
+> Nashia Holloway | May 11th, 2020
 
 ## Enumeration
 
